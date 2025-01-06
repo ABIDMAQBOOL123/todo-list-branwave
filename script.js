@@ -14,25 +14,43 @@ document.addEventListener("DOMContentLoaded", () => {
       const taskText = taskInput.value.trim();
       if (taskText !== "") {
         const li = document.createElement("li");
+  
+        // Task item with checkbox, edit, and delete buttons
         li.innerHTML = `
-                  <span>${taskText}</span>
-                  <button class="delete-btn">Delete</button>
-              `;
-        li.addEventListener("click", toggleComplete);
+          <label>
+            <input type="checkbox" class="task-checkbox" />
+            <span class="task-text">${taskText}</span>
+          </label>
+          <div class="buttons">
+            <button class="edit-btn">Edit</button>
+            <button class="delete-btn">Delete</button>
+          </div>
+        `;
+  
+        // Add event listeners for buttons
+        li.querySelector(".task-checkbox").addEventListener("change", toggleComplete);
+        li.querySelector(".edit-btn").addEventListener("click", editTask);
         li.querySelector(".delete-btn").addEventListener("click", deleteTask);
+  
         taskList.appendChild(li);
         taskInput.value = "";
       }
     }
   
     function toggleComplete(e) {
-      if (e.target.tagName === "LI") {
-        e.target.classList.toggle("completed");
+      const taskText = e.target.closest("li").querySelector(".task-text");
+      taskText.classList.toggle("completed", e.target.checked);
+    }
+  
+    function editTask(e) {
+      const taskText = e.target.closest("li").querySelector(".task-text");
+      const newTaskText = prompt("Edit your task:", taskText.textContent);
+      if (newTaskText !== null && newTaskText.trim() !== "") {
+        taskText.textContent = newTaskText.trim();
       }
     }
   
     function deleteTask(e) {
-      e.stopPropagation();
       e.target.closest("li").remove();
     }
   });
