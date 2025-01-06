@@ -3,29 +3,57 @@ body {
     font-family: 'Roboto', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f8f9fa;
+    background: linear-gradient(to right, #4facfe, #00f2fe);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    color: #ffffff;
   }
   
   .container {
     background: #ffffff;
-    padding: 20px 30px;
-    border-radius: 10px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    color: #333;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     width: 100%;
-    max-width: 400px;
+    max-width: 500px;
     box-sizing: border-box;
+    text-align: center;
   }
   
   .app-title {
-    font-size: 24px;
+    font-size: 28px;
     font-weight: bold;
-    text-align: center;
-    color: #343a40;
+    color: #333;
     margin-bottom: 20px;
+  }
+  
+  .progress-bar {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  .progress-bar span {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  .progress {
+    background: #e9ecef;
+    border-radius: 10px;
+    height: 10px;
+    width: 100%;
+    margin-top: 5px;
+    overflow: hidden;
+  }
+  
+  #progressFill {
+    background: linear-gradient(to right, #00f260, #0575e6);
+    height: 100%;
+    width: 0%;
+    transition: width 0.3s ease-in-out;
   }
   
   .input-container {
@@ -40,7 +68,6 @@ body {
     border: 1px solid #ced4da;
     border-radius: 5px;
     font-size: 16px;
-    color: #495057;
     outline: none;
     transition: all 0.3s ease;
   }
@@ -61,12 +88,15 @@ body {
   }
   
   .primary-btn {
-    background-color: #007bff;
+    background: linear-gradient(to right, #4facfe, #00f2fe);
     color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 5px;
   }
   
   .primary-btn:hover {
-    background-color: #0056b3;
+    background: linear-gradient(to right, #0575e6, #00d4ff);
   }
   
   /* Task List Styles */
@@ -85,12 +115,13 @@ body {
     border: 1px solid #ced4da;
     border-radius: 5px;
     margin-bottom: 10px;
-    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
   
   li:hover {
-    background-color: #e9ecef;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   }
   
   label {
